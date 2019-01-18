@@ -1,0 +1,34 @@
+categories:
+  path: /categories
+  methods: [GET]
+  controller: App\Controller\CategoryController::getAllCategories
+
+category:
+  path: /categories/{id}
+  methods: [GET]
+  controller: App\Controller\CategoryController::getCategory
+
+category_delete:
+  path: /categories/{id}
+  methods: [DELETE]
+  controller: App\Controller\CategoryController::deleteCategory
+
+authors:
+  path: /authors
+  methods: [GET]
+  controller: App\Controller\AuthorController::getAllAuthors
+
+author:
+  path: /authors/{id}
+  methods: [GET]
+  controller: App\Controller\AuthorController::getAuthor
+
+author_delete:
+  path: /authors/{id}
+  methods: [DELETE]
+  controller: App\Controller\AuthorController::deleteAuthor
+
+# login_user:
+#   path: /login/{username}/{password}
+#   methods: [POST]
+#   controller: App\Controller\UserController::user_login
