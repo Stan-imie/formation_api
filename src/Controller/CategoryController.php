@@ -9,15 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CategoryController extends AbstractController
 {
+  /**
+   * [getAllCategories description]
+   * @return [type] [description]
+   */
   function getAllCategories() {
-    $categories= [
-      ["name" => "Categorie 1"],
-      ["name" => "Categorie 2"],
-      ["name" => "Categorie 3"],
-    ];
-    $jsonResponse = json_encode($categories);
 
-    //return new Response($jsonResponse);
     return $this->render('affichage/index.html.twig', [
             'name' => $jsonResponse,
         ]);
