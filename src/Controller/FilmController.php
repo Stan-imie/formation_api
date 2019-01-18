@@ -6,26 +6,36 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 //use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Films;
 
 class FilmController extends AbstractController
 {
 
 
   function getAllFilm(){
-    
+
+
+  }
+
+  function getFilm($id) {
+
+    $film = $this->getDoctrine()
+        ->getRepository(Films::class)
+        ->find($id);
+
+    $categoryName = $film->getCategory()->getName();
+
+
+    //$products = $category->getProducts();
 
     return $this->render('affichage/index.html.twig', [
-      'film' => $film,
+      'film' => $categoryName,
     ]);
   }
 
-      function getFilm($id) {
-    
 
-    return new Response($jsonResponse);
-  }
-    function getFilmTitle($Title) {
-    
+  function getFilmTitle($title) {
+
 
     return new Response($jsonResponse);
   }
@@ -37,11 +47,4 @@ class FilmController extends AbstractController
             'Film' => $jsonResponse,
         ]);
   }
-}
-    
-
-
-
-
-
 }

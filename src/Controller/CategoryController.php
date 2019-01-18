@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 //use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Films;
 
 class CategoryController extends AbstractController
 {
@@ -22,13 +23,13 @@ class CategoryController extends AbstractController
   }
 
     function getCategory($id) {
-    
+
 
     return new Response($jsonResponse);
   }
-    
+
     function getCategoryName($name) {
-    
+
 
     return new Response($jsonResponse);
   }

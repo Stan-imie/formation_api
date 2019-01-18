@@ -8,57 +8,51 @@ category:
   methods: [GET]
   controller: App\Controller\CategoryController::getCategory
 
-category:
-  path: /categories/{name}
-  methods: [GET]
-  controller: App\Controller\CategoryController::getCategory
-
 category_delete:
   path: /categories/{id}
   methods: [DELETE]
   controller: App\Controller\CategoryController::deleteCategory
 
 
-film:
+films:
   path: /film
   methods: [GET]
-  controller: App\Controller\CategoryController::getAllFilm
+  controller: App\Controller\FilmController::getAllFilm
 
-film:
+film_id:
   path: /film/{id}
   methods: [GET]
-  controller: App\Controller\CategoryController::getFilm
+  controller: App\Controller\FilmController::getFilm
 
-film:
-  path: /categories/{title}
+film_title:
+  path: /film/{title}
   methods: [GET]
-  controller: App\Controller\CategoryController::getFilmTitle
+  controller: App\Controller\FilmController::getFilmTitle
 
 film_delete:
   path: /film/{id}
   methods: [DELETE]
-  controller: App\Controller\CategoryController::deleteFilm
-
+  controller: App\Controller\FilmController::deleteFilm
 
 actor:
   path: /actor
   methods: [GET]
-  controller: App\Controller\AuthorController::getAllActor
+  controller: App\Controller\ActorController::getAllActor
 
-author:
+actor_post:
+  path: /actor
+  methods: [POST]
+  controller: App\Controller\ActorController::setActor
+
+actor_id:
   path: /actor/{id}
   methods: [GET]
-  controller: App\Controller\AuthorController::getActor
-
-actor:
-  path: /actor/{id}
-  methods: [GET]
-  controller: App\Controller\AuthorController::getActorName
+  controller: App\Controller\ActorController::getActorName
 
 actor_delete:
   path: /actor/{id}
   methods: [DELETE]
-  controller: App\Controller\AuthorController::deleteActor
+  controller: App\Controller\ActorController::deleteActor
 
 # login_user:
 #   path: /login/{username}/{password}
