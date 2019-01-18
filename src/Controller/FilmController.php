@@ -10,8 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FilmController extends AbstractController
 {
 
+
   function getAllFilm(){
     
+
     return $this->render('affichage/index.html.twig', [
       'film' => $film,
     ]);

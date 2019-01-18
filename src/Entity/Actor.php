@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,6 +27,17 @@ class Actor
      * @ORM\Column(type="string", length=255)
      */
     private $firstname;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\films")
+     */
+    private $film_id;
+
+    public function __construct()
+    {
+        $this->film_id = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -54,4 +67,32 @@ class Actor
 
         return $this;
     }
+
+    /**
+     * @return Collection|films[]
+     */
+    public function getFilmId(): Collection
+    {
+        return $this->film_id;
+    }
+
+    public function addFilmId(films $filmId): self
+    {
+        if (!$this->film_id->contains($filmId)) {
+            $this->film_id[] = $filmId;
+        }
+
+        return $this;
+    }
+
+    public function removeFilmId(films $filmId): self
+    {
+        if ($this->film_id->contains($filmId)) {
+            $this->film_id->removeElement($filmId);
+        }
+
+        return $this;
+    }
+
+
 }

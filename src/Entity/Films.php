@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +37,21 @@ class Films
      * @ORM\Column(type="string", length=2000, nullable=true)
      */
     private $synopsis;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\actor", inversedBy="film_id")
+     */
+    private $actorId_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categories", inversedBy="category_movie")
+     */
+    private $category;
+
+    public function __construct()
+    {
+        $this->actor_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -85,6 +102,44 @@ class Films
     public function setSynopsis(?string $synopsis): self
     {
         $this->synopsis = $synopsis;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|actor[]
+     */
+    public function getAutorId(): Collection
+    {
+        return $this->actor_id;
+    }
+
+    public function addAutorId(actor $actorId): self
+    {
+        if (!$this->actor_id->contains($actorId)) {
+            $this->actor_id[] = $actorId;
+        }
+
+        return $this;
+    }
+
+    public function removeAutorId(actor $actorId): self
+    {
+        if ($this->actor_id->contains($actorId)) {
+            $this->actor_id->removeElement($actorId);
+        }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Categories
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Categories $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +23,16 @@ class Categories
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\films", mappedBy="category")
+     */
+    private $category_movie;
+
+    public function __construct()
+    {
+        $this->category_movie = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,4 +49,37 @@ class Categories
 
         return $this;
     }
+
+    /**
+     * @return Collection|films[]
+     */
+    public function getCategoryMovie(): Collection
+    {
+        return $this->category_movie;
+    }
+
+    public function addCategoryMovie(films $categoryMovie): self
+    {
+        if (!$this->category_movie->contains($categoryMovie)) {
+            $this->category_movie[] = $categoryMovie;
+            $categoryMovie->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategoryMovie(films $categoryMovie): self
+    {
+        if ($this->category_movie->contains($categoryMovie)) {
+            $this->category_movie->removeElement($categoryMovie);
+            // set the owning side to null (unless already changed)
+            if ($categoryMovie->getCategory() === $this) {
+                $categoryMovie->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use Symfony\Component\HttpFoundation\JsonResponse;
 //use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,6 +36,12 @@ class ActorController extends AbstractController
             'Actor' => $jsonResponse,
         ]);
   }
+    public function index()
+    {
+        return $this->render('actor/index.html.twig', [
+            'controller_name' => 'ActorController',
+        ]);
+    }
 
 
 
