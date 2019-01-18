@@ -7,37 +7,34 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class FilmController extends AbstractController
+class ActorController extends AbstractController
 {
 
-  function getAllFilm(){
+    function getAllActor(){
     
     return $this->render('affichage/index.html.twig', [
-      'film' => $film,
+      'actor' => $actor,
     ]);
   }
 
-      function getFilm($id) {
+    function getActor($id) {
     
 
     return new Response($jsonResponse);
   }
-    function getFilmTitle($Title) {
+    function getActorName($name) {
     
 
     return new Response($jsonResponse);
   }
 
-  function deleteFilm($id){
+  function deleteActor($id){
     $jsonResponse = json_encode([]);
     //return new Response($jsonResponse);
     return $this->render('affichage/index.html.twig', [
-            'Film' => $jsonResponse,
+            'Actor' => $jsonResponse,
         ]);
   }
-}
-    
-
 
 
 
