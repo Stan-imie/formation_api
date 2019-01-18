@@ -25,7 +25,7 @@ class CategoryController extends AbstractController
     return new Response($jsonResponse);
   }
     
-    function getCategoryName($Name) {
+    function getCategoryName($name) {
     
 
     return new Response($jsonResponse);
