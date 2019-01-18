@@ -23,13 +23,19 @@ class FilmController extends AbstractController
         ->getRepository(Films::class)
         ->find($id);
 
-    $categoryName = $film->getCategory()->getName();
+    $title = $film->getTitle();
+    $year = $film->getYear();
+    $poster = $film->getPoster();
+    $synopsis = $film->getSynopsis();
 
 
     //$products = $category->getProducts();
 
     return $this->render('affichage/index.html.twig', [
-      'film' => $categoryName,
+      'title' => $title,
+      'annee' => $year,
+      'poster' => $poster,
+      'synopsis' => $synopsis,
     ]);
   }
 
