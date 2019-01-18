@@ -39,7 +39,7 @@ class Films
     private $synopsis;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\actor", inversedBy="film_id")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Actor", inversedBy="film_id")
      */
     private $actorId_id;
 
